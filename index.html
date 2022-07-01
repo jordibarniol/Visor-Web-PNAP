@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+    
+    <title>PNAP</title>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="css/leaflet.css"/>
+    <link rel="stylesheet" href="css/mapa.css"/>
+
+    <link rel="stylesheet" href="css/styledLayerControl.css"/>
+
+    <link rel="stylesheet" href="css/leaflet-search.min.css"/>
+    <link rel="stylesheet" href="css/leaflet-search.mobile.min.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+
+    <link rel="stylesheet" href="css/L.Control.Locate.min.css"/>
+
+    
+    
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
+
+
+    <script type="module" src="js/index.js" defer></script>
+    
+    <link rel="stylesheet" href="css/index.css"/>
+
+    
+    
+    
+    
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/leaflet.js"></script>
+
+    <script src="js/leaflet.ajax.min.js"></script>
+    
+    
+    <script src="js/styledLayerControl.js"></script>
+
+    <script src="js/proj4-compressed.js"></script>
+    <script src="js/proj4leaflet.js"></script>
+
+    
+
+   
+    <script src="js/L.Control.Locate.min.js"></script>
+    <script src="js/leaflet-search.min.js"></script>
+
+
+
+
+
+    <script type="text/javascript" src="http://localhost:3000/dades_vectorials/limit_pnap.js"></script>
+    
+    <script src="js/mapa.js" defer></script>
+
+</head>
+
+<body>
+    <div data-role="page" id="mapPage" >
+
+        <div data-role="header" data-position="fixed" >
+            <a href="#index_panel" class="ui-btn ui-btn-left ui-icon-bars ui-btn-corner-all ui-btn-icon-notext"></a>
+            <h1>Parc Natural de l'Alt Pirineu</h1>
+            <div class="ui-btn-right">
+                <a href="javascript:location.href='index.html'" data-transition="slideup" class="ui-btn ui-icon-refresh ui-btn-corner-all ui-btn-icon-notext"></a>
+                
+            </div>
+        </div>
+
+        <div id="map-content" data-role="content">
+            <div id="panorama"></div>  
+            <div id="map"></div>   
+                     
+        </div>
+
+        
+
+        <div data-role="panel" data-display="overlay" id="index_panel" data-theme="a" data-swipe-close="false">
+            <h2>Cercador</h2>
+            <ul data-role="listview">
+
+
+                <li data-icon="carat-d"><a href="#">Hàbitats</a></li>
+                
+                <!-- flora -->
+                <li data-icon="carat-d"><a href="#" id="flora">Flora</a></li>
+                    <div id="llistatflora" style="display: none">
+                        <label>Buscar:</label>
+                        <input id="buscador" type="input" value="">
+                        
+                        <div class="item">
+                            <div class="texto">
+                                <a href="#fl1"><label class="nombres">FL1. Cerinthe glabra</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a href="#fl2"><label class="nombres">FL2. Hippuris vulgaris</label></a>
+                                
+                            </div>
+                       </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL3. Epipogium aphyllum</label></a>
+                                
+                            </div>
+                        </div>
+
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL4. Matthiola valesiaca</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL5. Hypericum linariifolium</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL6. Saponaria bellidifolia</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL7. Arabis soyeri subsp. Soyeri</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL8. Viola parvula</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL9. Coralet (Berberis vulgaris subsp. seroi)</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL10. Licopodiàcies: Licopodium clavatum i Diphasiastrum alpinum</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL11. Draba fladnizensis i Woodsia alpina</label></a>
+                                
+                            </div>
+                       </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL12. Saxifraga retusa</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                                <div class="texto">
+                                    <a><label class="nombres">FL13. Linaria supina subsp. fontqueri</label></a>
+                                    
+                                </div>
+                        </div>
+
+                        <div class="item">
+                                <div class="texto">
+                                    <a><label class="nombres">FL14. Juncus pyrenaeus</label></a>
+                                    
+                                </div>
+                        </div>
+
+                        <div class="item">
+                                <div class="texto">
+                                    <a><label class="nombres">FL15. Potamogeton praelongus</label></a>
+                                    
+                                </div>
+                        </div>
+
+                        <div class="item">
+                                <div class="texto">
+                                    <a><label class="nombres">FL16. Salix lapponum</label></a>
+                                    
+                                </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL17. Savina turífera Juniperus thurifera</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL18. Melapyrum sylvaticum</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL19. Draba nemorosa</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL20. Cystopteris montana</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL21. Flor de neu Leontopodium alpinum</label></a>
+                                
+                            </div>
+                       </div>
+
+                       <div class="item">
+                        <div class="texto">
+                            <a><label class="nombres">FL22. Hugueninia tanacetifolia subsp. suffruticosa</label></a>
+                            
+                        </div>
+                   </div>
+
+                   <div class="item">
+                        <div class="texto">
+                            <a><label class="nombres">FL23. Plantes pirenaico-atlàntiques</label></a>
+                            
+                        </div>
+                   </div>
+
+                   <div class="item">
+                        <div class="texto">
+                            <a><label class="nombres">FL24. Plantes invasores</label></a>
+                            
+                        </div>
+                   </div>
+
+                   <div class="item">
+                        <div class="texto">
+                            <a><label class="nombres">FL25. Astragalus penduliflorus</label></a>
+                            
+                        </div>
+                   </div>
+
+                   <div class="item">
+                        <div class="texto">
+                            <a><label class="nombres">FL26. Salix hastata</label></a>
+                            
+                        </div>
+                   </div>
+
+                   <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL27. Menyanthes trifoliata</label></a>
+                                
+                            </div>
+                    </div>
+
+                    <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL28. Nabiu Vaccinium myrtillus</label></a>
+                                
+                            </div>
+                    </div>
+
+                    <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FL29. Botrychium matricariifolium</label></a>
+                                
+                            </div>
+                    </div>
+
+                    <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres">FLXX. Buxbaumia viridis</label></a>
+                                
+                            </div>
+                    </div>
+
+                       
+                        
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- fauna -->
+                    <li data-icon="carat-d"><a href="#" id="fauna">Fauna</a></li>
+                    <div id="llistatfauna" style="display: none">
+                        <label>Buscar:</label>
+                        <input id="buscador2" type="input" value="">
+                        
+                        <div class="item">
+                            <div class="texto">
+                                <a href="#fa1"><label class="nombres2">FA1. Truita de riu Salmo trutta fario</label></a>
+                                
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="texto">
+                                <a href="#fa2"><label class="nombres2">FA2. Tritó palmat Lissotriton helveticus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA3. Amfibis d'estanys d'alta muntanya</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA4. Sargantana pallaresa Iberolacerta aurelioi</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA5. Sargantana vivípara Zootoca vivipara</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA6. Milà reial MIlvus milvus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA7. Trencalòs Gypaetus barbatus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA8. Aufrany Neophron percnopterus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA9. Àguila daurada Aquila chrysaetos</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA10. Perdiu blanca Lagopus muta pyrenaicus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA11. Gall fer Tetrao urogallus aquitanicus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA12. Perdiu xerra de muntanya Perdix perdix hispaniensis</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA13. Becada Scolopax rusticola</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA14. Mussol pirinenc Aegolius funereus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA15. Ocells fluvials</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA16. Bitxac rogenc Saxicola rubetra</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA17. Raspinell pirinenc Certhia familiaris</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA18. Pela-roques Tichodroma muraria i pardal d'ala blanca Montifringilla nivalis</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA19. Gralla Corvus monedula</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA20. Verderola Emberiza citrinella</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA21. Almesquera Galemys pyrenaicus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA22. Marmota Marmota marmota</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA23. Rata d'aigua Arvicola sapidus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA24. Llebre Lepus europaeus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA25. Ós bru Ursus arctos</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA26. Ermini Mustela erminea</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA27. Ungulats</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA28. Quiròpters colonials</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA29. Voltor comú Gyps fulvus</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA30. Ocells Comuns del Parc Natural de l'Alt Pirineu</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA31. Ratpenat d'aigua Myotis daubentoni</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA32. Ropalòcers</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA33. Micromamífers</label></a>
+                                
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="texto">
+                                <a><label class="nombres2">FA36. Quiròpters forestals</label></a>
+                                
+                            </div>
+                        </div>
+
+                       
+                        
+                    </div>
+
+                    
+                <li data-icon="carat-d"><a href="#">Projectes de la zona</a></li>
+                
+                <!-- <div class="dropdown">
+                    <button class="dropbtn">Fauna</button>
+                    <div class="dropdown-content">
+                      <a href="#info_panel">Trencalos</a>
+                      <a href="#">Os</a>
+                      <a href="#">Rossinyol</a>
+                    </div>
+                </div> -->
+            </ul>
+
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- informacio divs -->
+        <div data-role="panel" data-display="overlay" id="fl1" data-position="right" data-dismissible="false" data-theme="b"  class="ui-panel-fixed-toolbar" data-swipe-close="false">
+            <div data-role="header" >
+                <h1>Cerinthe glabra</h1>
+                <div class="ui-btn-right">
+                    <a data-rel="close"class="ui-btn ui-icon-delete ui-btn-corner-all ui-btn-icon-notext" onclick=""></a>   
+                </div>
+            </div>
+
+            <div class="image">
+                <img src="http://localhost:3000/FL/FL1/FL1.jpg" alt="" width="30%" height="40%">
+            </div> 
+
+            <div class="lateral_dret" >
+                <div class="info">
+                    <p>L'any 2019 ha estat, en general, desfavorable per a l'espècie. El
+                        principal indicador negatiu ha estat la producció molt baixa, gairebé
+                        nul·la de plàntules. S'atribueix bàsicament a la sequera de
+                        primavera. No es pot excloure, però, que la compactació del sol
+                        pel trepig de les vaques el 2018 hagi frenat la germinació.</p>
+                    <p>Les condicions meteorològiques desfavorables també haurien
+                        impedit la maduració de plantes immadures de 2018 (pas de
+                        no reproductors a reproductors). Es preveia que el 2019 hi hagués
+                        un increment de reproductors, però no ha estat així. Caldrà
+                        veure si unes condicions més favorables el 2020 permeten un
+                        agument notable dels reproductors, ja que la major part dels no
+                        reproductors del 2019 ja tindran l'edat necessària per madurar
+                        sexualment.</p>
+                    <p>Com a punt positiu s'observa una lleu recuperació de la subpoblació
+                        de l'aclarida del bosc, que estava en situació molt dolenta
+                        des de 2017.</p>
+                    <p>La tardor de 2018 es va instal·lar el nou tancament perimetral,
+                        destinat a impedir l'entrada de les vaques. El 2019 el tancament
+                        ha estat funcional, però els seus efectes positius no s'han pogut
+                        manifestar encara a causa de les condicions meteorològiques
+                        adverses. Esperem que el 2020 aquests efectes siguin més perceptibles.</p>
+                </div>
+            </div>
+
+            <div class="image">
+                Nombre d'individus reproductors: <br>
+                <img src="http://localhost:3000/FL/FL1/FL1_grafic.jpg" alt="" width="50%" height="50%">
+            </div>
+            
+
+        </div>
+
+        <div data-role="panel" data-display="overlay" id="fl2" data-position="right" data-dismissible="false" data-theme="b"  class="ui-panel-fixed-toolbar" data-swipe-close="false">
+            <div data-role="header" >
+                <h1>Hippuris vulgaris</h1>
+                <div class="ui-btn-right">
+                    <a data-rel="close"class="ui-btn ui-icon-delete ui-btn-corner-all ui-btn-icon-notext" onclick=""></a>   
+                </div>
+            </div>
+
+            <div class="image">
+                <img src="http://localhost:3000/FL/FL2/FL2.jpg" alt="" width="50%" height="50%">
+            </div> 
+
+            <div class="lateral_dret" >
+                <div class="info">
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <div data-role="panel" data-display="overlay" id="fa1" data-position="right" data-dismissible="false" data-theme="b" .ui-panel{width:25%;} class="ui-panel-fixed-toolbar" data-swipe-close="false">
+            <div data-role="header" >
+                <h1>Truita de riu Salmo trutta fario</h1>
+                <div class="ui-btn-right">
+                    <a data-rel="close"class="ui-btn ui-icon-delete ui-btn-corner-all ui-btn-icon-notext" onclick=""></a>   
+                </div>
+            </div>
+
+            <div class="image">
+                <img src="" alt="" width="50%" height="50%">
+            </div> 
+
+            <div class="lateral_dret" >
+                <div class="info">
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <div data-role="panel" data-display="overlay" id="fa2" data-position="right" data-dismissible="false" data-theme="b" .ui-panel{width:25%;} class="ui-panel-fixed-toolbar" data-swipe-close="false">
+            <div data-role="header" >
+                <h1>Tritó palmat Lissotriton helveticus</h1>
+                <div class="ui-btn-right">
+                    <a data-rel="close"class="ui-btn ui-icon-delete ui-btn-corner-all ui-btn-icon-notext" onclick=""></a>   
+                </div>
+            </div>
+
+            <div class="image">
+                <img src="" alt="" width="50%" height="50%">
+            </div> 
+
+            <div class="lateral_dret" >
+                <div class="info">
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit odio blandit bibendum, enim habitant tortor aptent nascetur interdum proin cubilia et in etiam, lectus convallis sollicitudin sociosqu pharetra ultrices massa praesent montes. Ullamcorper elementum senectus justo class lacus nec vehicula, mus euismod laoreet iaculis magna est scelerisque, phasellus et cum cubilia volutpat sagittis. Nunc ut nascetur euismod fringilla pellentesque nam donec senectus, inceptos netus nibh vel himenaeos cubilia auctor, parturient elementum vitae natoque fusce maecenas tortor. Leo condimentum tortor vulputate egestas semper aenean dictumst, natoque tincidunt nisl nisi nibh nulla proin, conubia massa nec feugiat donec suspendisse.</p> <p>Suspendisse faucibus et conubia pulvinar rhoncus donec cursus odio massa gravida, class porta id ultrices dictumst hac diam vel platea eleifend, semper curabitur nascetur urna sodales nisi eget nibh hendrerit. In erat lacus mollis hac mauris sem nisl leo viverra habitant eu et nunc senectus aliquam magna arcu metus, libero sagittis sociosqu posuere per ante eros elementum class orci egestas enim curae magnis varius imperdiet morbi. Eu non augue viverra vel risus inceptos rhoncus malesuada lacus pulvinar, ullamcorper vehicula aliquet habitant varius molestie praesent quam. Imperdiet enim mi pretium congue cubilia habitant euismod nullam porttitor ut etiam, felis natoque montes habitasse dignissim risus aenean est rhoncus phasellus sem, turpis mus vitae ac justo fames semper curabitur fermentum praesent. Nostra velit suscipit dictum laoreet purus luctus a malesuada magna ultrices placerat, fermentum mollis nunc posuere facilisis augue vitae iaculis metus penatibus.</p>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </div>
+</body>
+</html>
+
+<!-- http://www.falconmasters.com/tutoriales/como-hacer-un-menu-desplegable/ -->
