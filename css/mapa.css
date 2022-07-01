@@ -1,0 +1,27 @@
+#mapPage {
+    height: 84%;
+    width: 100%;
+}
+#map{
+    height: 100%;
+    width: 100%;
+}
+
+#map-content{
+    height: 100%;
+    width: 100%;
+    padding: 0px; 
+    margin: 0px;
+    z-index: -1;
+}
+
+#panorama {
+    position:absolute;
+    z-index:1000;   
+    left: 10px;
+    bottom: 100px;
+    height:150px;
+    width:200px;
+    resize: both;
+    background-color:transparent !important;
+}
